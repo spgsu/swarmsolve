@@ -116,6 +116,21 @@ framework and wrote the initial code. Development was later taken over by the
 coding agents **Claude** (Anthropic) and **Codex** (OpenAI), with substantial
 direction and review from the author throughout.
 
+### References
+
+The swarm-of-agents design draws on the following prior research:
+
+- L. Rosenberg, "Artificial Swarm Intelligence, a Human-in-the-Loop Approach
+  to A.I.," in *Proc. 30th AAAI Conf. on Artificial Intelligence (AAAI-16)*,
+  2016, pp. 4381-4382.
+- H. Ahmed and J. Glasgow, "Swarm Intelligence: Concepts, Models and
+  Applications," Technical Report 2012-585, School of Computing, Queen's
+  University, Kingston, Ontario, Canada, Feb. 2012.
+- J. Tang, G. Liu, and Q. T. Pan, "A Review on Representative Swarm
+  Intelligence Algorithms for Solving Optimization Problems: Applications and
+  Trends," *IEEE/CAA J. Autom. Sinica*, vol. 8, no. 10, pp. 1627-1643, Oct.
+  2021.
+
 ## License
 
 MIT -- see [LICENSE](LICENSE).
