@@ -1,0 +1,13 @@
+# Example CLI manifest tool -- delete or edit freely; see swarmsolve/external_tools.py
+# for the manifest format. Every .toml file in this directory becomes a worker action.
+name = "line_count"
+description = "Count lines in a workspace file"
+kind = "cli"
+# {path} is a whole-token placeholder: the raw arg value is substituted verbatim as one
+# argv element (no shell involved, so nothing in the value can break out of its argument).
+# Uses the interpreter running the swarm -- change "python" to "python3" if that's your PATH.
+argv = ["python", "-c", "import sys,pathlib; print(len(pathlib.Path(sys.argv[1]).read_text().splitlines()))", "{path}"]
+
+[params.path]
+required = true
+help = "relative/path of the file to count lines in"

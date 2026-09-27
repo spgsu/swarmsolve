@@ -1,0 +1,12 @@
+# Example HTTP manifest tool -- delete or edit freely; see swarmsolve/external_tools.py
+# for the manifest format. No API key needed; demonstrates the http kind end to end.
+name = "my_ip"
+description = "Look up this machine's public IP address"
+kind = "http"
+method = "GET"
+url = "https://api.ipify.org"
+
+[params.format]
+in = "query"
+required = false
+help = "optional: 'json' for a JSON body instead of plain text"

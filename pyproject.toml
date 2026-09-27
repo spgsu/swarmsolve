@@ -1,0 +1,25 @@
+[project]
+name = "swarmsolve"
+version = "0.1.0"
+description = "A small blackboard swarm of LLM agents that plans, works, verifies, and judges its way to an answer inside an isolated git worktree."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Sam Pazarbasi" }]
+dependencies = []
+
+[project.optional-dependencies]
+claude = ["anthropic>=0.40.0"]
+
+[project.scripts]
+swarmsolve = "swarmsolve.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["swarmsolve*"]
+
+[tool.setuptools.package-data]
+swarmsolve = ["toolbox.d/*.toml"]

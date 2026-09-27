@@ -1,0 +1,6 @@
+# Core swarmsolve has zero hard dependencies -- every module uses only the
+# Python standard library (requires Python >=3.11, see pyproject.toml).
+#
+# Uncomment the line below only if you want the claude/<model> backend
+# (equivalent to `pip install -e ".[claude]"`):
+# anthropic>=0.40.0
