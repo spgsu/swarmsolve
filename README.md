@@ -94,7 +94,27 @@ You can add more tools with zero Python by dropping a `.toml` manifest into
 - **Budget-capped**: a hard `$` ceiling with pre-flight cost estimation, so a
   run can't blow past what you set.
 - **SSRF-guarded fetches**: `fetch_url`/manifest HTTP tools refuse requests to
-  private/link-local addresses.
+  private/link-local addresses (resolved at request time; not hardened
+  against DNS rebinding).
+
+### What this is *not*
+
+The `shell` tool runs LLM-authored commands for real. A regex denylist blocks
+the obviously catastrophic (`rm -rf /`, fork bombs, `sudo`, `format C:`, ...),
+and commands run `cwd`-scoped to the workspace with a timeout and output cap
+-- but that's mitigation, not a jail. On Linux, `bwrap` (if installed) adds a
+real filesystem/network sandbox; on Windows and macOS there is currently no
+sandbox at all, denylist only. Git-worktree isolation protects your checked-out
+branch from a bad *diff*, but does nothing to contain what a shell command does
+while the run is live. Don't point this at a workspace containing anything you
+wouldn't want an untrusted script to read or touch.
+
+## Credits
+
+**Qwen3.5** and **Mistral 7B** (run locally via Ollama) designed the original
+framework and wrote the initial code. Development was later taken over by the
+coding agents **Claude** (Anthropic) and **Codex** (OpenAI), with substantial
+direction and review from the author throughout.
 
 ## License
 
