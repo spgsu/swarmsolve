@@ -1,4 +1,4 @@
-# swarmsolve
+# SwarmSolve
 
 On long or open-ended tasks, a single agent has to hold the whole task in one
 context window for the entire run. This project instead splits the task
