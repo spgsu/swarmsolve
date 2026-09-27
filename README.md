@@ -1,13 +1,20 @@
 # swarmsolve
 
-A small blackboard swarm of LLM agents that plans, works, verifies, and judges
-its way to an answer inside an isolated git worktree.
+On long or open-ended tasks, a single agent has to hold the whole task in one
+context window for the entire run. This project instead splits the task
+across multiple agents that coordinate through shared state, so no one
+context has to carry everything at once. Idea is from the structural pattern as
+ant-colony and bacterial-foraging algorithms (see [References](#references)).
 
-Give it a natural-language task; a swarm of tool-using worker agents (mix
-local Ollama, Claude, Gemini, DeepSeek freely) works it on a shared blackboard
-across adaptive rounds, a judge model scores each round's answer, and the
-whole run is checked against your project's own build/test commands before
-anything is trusted or merged.
+Swarmsolve allows workers (any mix of local Ollama models, Claude, Gemini, DeepSeek) read and
+write a shared blackboard across rounds. A judge model scores each round's
+answer against the task's acceptance criteria. A planner reassigns work to
+whatever is still unresolved.
+
+No round is accepted on a model's self-report. Each one is checked against
+the project's own build/test commands, run against the actual diff. Runs are
+isolated to a separate git worktree, every event is hash-chained into an
+audit log, and spend is capped by a budget you set before the run starts.
 
 ```
 planner (round 0)  ->  plan + acceptance criteria onto the blackboard
